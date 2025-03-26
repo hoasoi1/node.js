@@ -6,6 +6,9 @@ const bookingRoutes = require('./routes/bookingRoutes');
 const app = express();
 const connectMongo = require("./config/connectDB");
 connectMongo().catch((err) => console.log(err));
+const categoryRoutes = require('./routes/categoryRoutes');
+app.use('/categories', categoryRoutes);
+
 // Cấu hình Middleware
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
