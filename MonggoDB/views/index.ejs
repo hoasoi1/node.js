@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Đặt Chỗ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Danh sách Đặt Chỗ</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Tên Khách Hàng</th>
+            <th>Hành Động</th>
+        </tr>
+        <% bookings.forEach(booking => { %>
+        <tr>
+            <td><%= booking.id %></td>
+            <td><%= booking.customerName %></td>
+            <td>
+                <form action="/delete/<%= booking.id %>" method="POST">
+                    <button type="submit">Xóa</button>
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+
+    <h2>Thêm Đặt Chỗ</h2>
+    <form action="/add" method="POST">
+        <input type="text" name="customerName" required placeholder="Tên Khách Hàng">
+        <button type="submit">Thêm</button>
+    </form>
+</body>
+</html>
